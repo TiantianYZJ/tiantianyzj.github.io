@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生日快乐，亲爱的妈妈！</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #e91e63;
+            --secondary: #ff80ab;
+            --accent: #ff4081;
+            --light: #fff5f7;
+            --dark: #880e4f;
+            --text: #333;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Serif SC', serif;
+            background: linear-gradient(135deg, #fff5f7, #ffeef2);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .heart-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.05;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23e91e63' d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E");
+            background-size: 120px;
+        }
+
+        /* 头部样式 */
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-content {
+            z-index: 10;
+            max-width: 800px;
+        }
+
+        .balloon {
+            position: absolute;
+            bottom: -100px;
+            width: 60px;
+            height: 80px;
+            border-radius: 50%;
+            animation: float 15s infinite ease-in-out;
+            opacity: 0.8;
+            z-index: 1;
+        }
+
+        .balloon:nth-child(1) {
+            left: 10%;
+            background: #ff4081;
+            animation-delay: 0s;
+        }
+        .balloon:nth-child(2) {
+            left: 25%;
+            background: #e91e63;
+            animation-delay: 2s;
+        }
+        .balloon:nth-child(3) {
+            left: 40%;
+            background: #ff80ab;
+            animation-delay: 4s;
+        }
+        .balloon:nth-child(4) {
+            left: 55%;
+            background: #f8bbd0;
+            animation-delay: 6s;
+        }
+        .balloon:nth-child(5) {
+            left: 70%;
+            background: #f48fb1;
+            animation-delay: 8s;
+        }
+        .balloon:nth-child(6) {
+            left: 85%;
+            background: #ec407a;
+            animation-delay: 10s;
+        }
+
+        .balloon::after {
+            content: '';
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 30px;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes float {
+            0% {
+                bottom: -100px;
+                transform: translateX(0) rotate(0deg);
+            }
+            10% {
+                transform: translateX(-10px) rotate(-5deg);
+            }
+            20% {
+                transform: translateX(10px) rotate(5deg);
+            }
+            30% {
+                transform: translateX(-15px) rotate(-8deg);
+            }
+            40% {
+                transform: translateX(15px) rotate(8deg);
+            }
+            50% {
+                transform: translateX(-10px) rotate(-5deg);
+            }
+            60% {
+                transform: translateX(10px) rotate(5deg);
+            }
+            70% {
+                transform: translateX(-5px) rotate(-3deg);
+            }
+            80% {
+                transform: translateX(5px) rotate(3deg);
+            }
+            100% {
+                bottom: 100vh;
+                transform: translateX(0) rotate(0deg);
+            }
+        }
+
+        h1 {
+            font-family: 'Ma Shan Zheng', cursive;
+            font-size: 5rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+            text-shadow: 3px 3px 0 rgba(232, 30, 99, 0.2);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .birthday-date {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 2rem;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 10px 20px;
+            border-radius: 50px;
+            display: inline-block;
+        }
+
+        .age-box {
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            color: white;
+            font-size: 1.8rem;
+            padding: 15px 40px;
+            border-radius: 10px;
+            display: inline-block;
+            margin: 20px 0;
+            box-shadow: var(--shadow);
+            transform: rotate(-3deg);
+            animation: rotate 8s infinite ease-in-out;
+        }
+
+        @keyframes rotate {
+            0%, 100% { transform: rotate(-3deg); }
+            50% { transform: rotate(3deg); }
+        }
+
+        .scroll-down {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2rem;
+            color: var(--primary);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-20px);}
+            60% {transform: translateY(-10px);}
+        }
+
+        /* 内容区域 */
+        section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        /* 时间线样式 */
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 4px;
+            background: var(--secondary);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            width: 50%;
+            padding: 20px 40px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: var(--transition);
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+
+        .timeline-content::after {
+            content: '';
+            position: absolute;
+            top: 30px;
+            width: 20px;
+            height: 20px;
+            background: white;
+            transform: rotate(45deg);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content::after {
+            right: -10px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::after {
+            left: -10px;
+        }
+
+        .timeline-year {
+            position: absolute;
+            top: 20px;
+            width: 80px;
+            height: 80px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            box-shadow: 0 0 0 8px var(--light);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-year {
+            right: -40px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-year {
+            left: -40px;
+        }
+
+        .timeline-title {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .timeline-text {
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        .timeline-icon {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+
+        /* 照片墙 */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .photo-card {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            height: 300px;
+            cursor: pointer;
+            transform: scale(0.95);
+            transition: var(--transition);
+        }
+
+        .photo-card:hover {
+            transform: scale(1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .photo-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .photo-card:hover .photo-img {
+            transform: scale(1.1);
+        }
+
+        .photo-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 20px;
+            color: white;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+        }
+
+        .photo-card:hover .photo-overlay {
+            transform: translateY(0);
+        }
+
+        .photo-title {
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+        }
+
+        .photo-location {
+            display: flex;
+            align-items: center;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* 祝福卡片 */
+        .wishes-container {
+            display: flex;
+            justify-content: center;
+            margin: 60px 0;
+        }
+
+        .card {
+            width: 350px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-15px) rotateX(5deg);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-front, .card-back {
+            padding: 40px;
+            backface-visibility: hidden;
+            transition: transform 0.8s;
+        }
+
+        .card-front {
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            color: white;
+            text-align: center;
+            height: 350px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card-back {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            transform: rotateY(180deg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card.flipped .card-front {
+            transform: rotateY(180deg);
+        }
+
+        .card.flipped .card-back {
+            transform: rotateY(0deg);
+        }
+
+        .card-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .card-title {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            font-family: 'Ma Shan Zheng', cursive;
+        }
+
+        .card-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .signature {
+            margin-top: 30px;
+            font-family: 'Ma Shan Zheng', cursive;
+            font-size: 1.8rem;
+            color: var(--primary);
+            text-align: right;
+            width: 100%;
+        }
+
+        /* 烟花效果 */
+        .fireworks {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        /* 页脚 */
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .footer-title {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+
+        .footer-text {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .love-icon {
+            color: var(--accent);
+            animation: heartbeat 1.2s infinite;
+            display: inline-block;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            14% { transform: scale(1.3); }
+            28% { transform: scale(1); }
+            42% { transform: scale(1.3); }
+            70% { transform: scale(1); }
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3.5rem;
+            }
+            
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 20px;
+                left: 0 !important;
+            }
+            
+            .timeline-item:nth-child(even) .timeline-year,
+            .timeline-item:nth-child(odd) .timeline-year {
+                left: 0;
+            }
+            
+            .timeline-content::after {
+                left: -10px !important;
+                right: auto !important;
+            }
+            
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 背景心形图案 -->
+    <div class="heart-bg"></div>
+
+    <!-- 气球动画 -->
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+    <div class="balloon"></div>
+
+    <!-- 烟花容器 -->
+    <div class="fireworks" id="fireworks"></div>
+
+    <!-- 页头 -->
+    <header>
+        <div class="header-content">
+            <h1>生日快乐，妈妈！</h1>
+            <div class="birthday-date">2025年6月2日</div>
+            <div class="age-box">43岁生日快乐！</div>
+            <p style="font-size: 1.4rem; max-width: 700px; margin: 20px auto; background: rgba(255,255,255,0.7); padding: 20px; border-radius: 15px;">
+                亲爱的妈妈，在这个特别的日子里，我想用这个精心制作的网页表达我对您的爱与感激。感谢您为我付出的一切！
+            </p>
+        </div>
+        <div class="scroll-down">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </header>
+
+    <!-- 回忆时间线 -->
+    <section class="memories">
+        <h2 class="section-title">我们的珍贵回忆</h2>
+        
+        <div class="timeline">
+
+            <!-- 回忆1 -->
+            <div class="timeline-item">
+                <div class="timeline-year">2023</div>
+                <div class="timeline-content">
+                    <div class="timeline-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="timeline-title">升学路上的陪伴</h3>
+                    <p class="timeline-text">
+                        六年级升学时，您每天都为我操心，自己摸爬滚打学习了许多升学知识。直到现在，每天晚上您还在看升学问题答疑直播，只为了给我最好的指导和支持。
+                    </p>
+                </div>
+            </div>
+            
+            <!-- 回忆2 -->
+            <div class="timeline-item">
+                <div class="timeline-year">2024</div>
+                <div class="timeline-content">
+                    <div class="timeline-icon">
+                        <i class="fas fa-umbrella-beach"></i>
+                    </div>
+                    <h3 class="timeline-title">魔都上海之旅</h3>
+                    <p class="timeline-text">
+                        2024年8月，我们两人一起到魔都上海，领略外滩的璀璨夜景，感受这座城市的独特魅力。那是我最难忘的夏日回忆之一！
+                    </p>
+                </div>
+            </div>
+            
+            <!-- 回忆3 -->
+            <div class="timeline-item">
+                <div class="timeline-year">2025</div>
+                <div class="timeline-content">
+                    <div class="timeline-icon">
+                        <i class="fas fa-mountain"></i>
+                    </div>
+                    <h3 class="timeline-title">寒假七日游</h3>
+                    <p class="timeline-text">
+                        2025年1月寒假，我们去了丹霞山、七星岩、连州地下河。在丹霞山看日出，在七星岩划船，在地下河探险，每一刻都充满欢声笑语。
+                    </p>
+                </div>
+            </div>
+            
+            <!-- 回忆4 -->
+            <div class="timeline-item">
+                <div class="timeline-year">每一天</div>
+                <div class="timeline-content">
+                    <div class="timeline-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3 class="timeline-title">无微不至的关怀</h3>
+                    <p class="timeline-text">
+                        初中住校后，您每天早晚都给我发消息，关心我的生活和学习。您的问候是我每天最温暖的时刻，让我知道无论何时，都有妈妈的爱陪伴着我。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 照片墙 -->
+    <section class="gallery-section">
+        <h2 class="section-title">我们的美好时光（精选）</h2>
+        
+        <div class="gallery">
+            <div class="photo-card">
+                <img src="https://pic1.imgdb.cn/item/68398caf58cb8da5c81e39f2.jpg" alt="上海外滩" class="photo-img">
+                <div class="photo-overlay">
+                    <h3 class="photo-title">上海外滩</h3>
+                    <div class="photo-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>2024年8月 · 上海</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="photo-card">
+                <img src="https://pic1.imgdb.cn/item/68398ce558cb8da5c81e3a2c.jpg" alt="丰盛晚餐" class="photo-img">
+                <div class="photo-overlay">
+                    <h3 class="photo-title">丰盛晚餐</h3>
+                    <div class="photo-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>2024年8月 · 上海</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="photo-card">
+                <img src="https://pic1.imgdb.cn/item/68398d3358cb8da5c81e3a6c.jpg" alt="城隍庙" class="photo-img">
+                <div class="photo-overlay">
+                    <h3 class="photo-title">城隍庙</h3>
+                    <div class="photo-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>2024年8月 · 上海</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="photo-card">
+                <img src="https://pic1.imgdb.cn/item/68398d5558cb8da5c81e3a76.jpg" alt="鲜肉月饼" class="photo-img">
+                <div class="photo-overlay">
+                    <h3 class="photo-title">鲜肉月饼</h3>
+                    <div class="photo-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>2024年8月 · 上海</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="photo-card">
+                <img src="https://pic1.imgdb.cn/item/68398d7258cb8da5c81e3a8b.jpg" alt="Apple" class="photo-img">
+                <div class="photo-overlay">
+                    <h3 class="photo-title">Apple</h3>
+                    <div class="photo-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>2024年8月 · 上海</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="photo-card">
+                <img src="https://pic1.imgdb.cn/item/68398e4e58cb8da5c81e3aa8.jpg" alt="整装待发" class="photo-img">
+                <div class="photo-overlay">
+                    <h3 class="photo-title">整装待发</h3>
+                    <div class="photo-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>2025年1月 · 丹霞山</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="photo-card">
+                <img src="https://pic1.imgdb.cn/item/68398e7258cb8da5c81e3aae.jpg" alt="门口公鸡" class="photo-img">
+                <div class="photo-overlay">
+                    <h3 class="photo-title">门口公鸡</h3>
+                    <div class="photo-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>2025年1月 · 丹霞山</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="photo-card">
+                <img src="https://pic1.imgdb.cn/item/68398e8158cb8da5c81e3ab4.jpg" alt="日落" class="photo-img">
+                <div class="photo-overlay">
+                    <h3 class="photo-title">日落</h3>
+                    <div class="photo-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>2025年1月 · 丹霞山</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="photo-card">
+                <img src="https://pic1.imgdb.cn/item/68398fb758cb8da5c81e3adb.jpg" alt="泛舟" class="photo-img">
+                <div class="photo-overlay">
+                    <h3 class="photo-title">泛舟</h3>
+                    <div class="photo-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>2025年1月 · 七星岩</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="photo-card">
+                <img src="https://pic1.imgdb.cn/item/68398fcc58cb8da5c81e3ae8.jpg" alt="红杉树" class="photo-img">
+                <div class="photo-overlay">
+                    <h3 class="photo-title">红杉树</h3>
+                    <div class="photo-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>2025年1月 · 七星岩</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="photo-card">
+                <img src="https://pic1.imgdb.cn/item/6839900658cb8da5c81e3aee.jpg" alt="大鼎" class="photo-img">
+                <div class="photo-overlay">
+                    <h3 class="photo-title">大鼎</h3>
+                    <div class="photo-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>2025年1月 · 鼎湖山</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="photo-card">
+                <img src="https://pic1.imgdb.cn/item/6839902458cb8da5c81e3b02.jpg" alt="瀑布" class="photo-img">
+                <div class="photo-overlay">
+                    <h3 class="photo-title">瀑布</h3>
+                    <div class="photo-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>2025年1月 · 鼎湖山</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="photo-card">
+                <img src="https://pic1.imgdb.cn/item/68398eff58cb8da5c81e3aba.jpg" alt="连州地下河" class="photo-img">
+                <div class="photo-overlay">
+                    <h3 class="photo-title">连州地下河</h3>
+                    <div class="photo-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>2025年1月 · 连州</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="photo-card">
+                <img src="https://pic1.imgdb.cn/item/68398f0e58cb8da5c81e3abc.jpg" alt="连州地下河" class="photo-img">
+                <div class="photo-overlay">
+                    <h3 class="photo-title">连州地下河</h3>
+                    <div class="photo-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>2025年1月 · 连州</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 祝福卡片 -->
+    <section class="wishes">
+        <h2 class="section-title">给妈妈的祝福</h2>
+        
+        <div class="wishes-container">
+            <div class="card" id="wish-card">
+                <div class="card-front">
+                    <div class="card-icon">
+                        <i class="fas fa-gift"></i>
+                    </div>
+                    <h3 class="card-title">点击开启祝福</h3>
+                    <p>送给最爱的妈妈</p>
+                </div>
+                <div class="card-back">
+                    <h3 class="card-title">亲爱的妈妈</h3>
+                    <p class="card-text">
+                        感谢您无微不至的关怀和付出！<br>
+                        您的爱是我成长路上最温暖的阳光。<br>
+                        在这个特别的日子里，<br>
+                        祝您生日快乐，健康美丽！<br>
+                        愿每一天都充满幸福与欢笑！
+                    </p>
+                    <div class="signature">爱您的儿子</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="footer-content">
+            <h3 class="footer-title">永远爱您，妈妈！</h3>
+            <p class="footer-text">
+                您是我生命中最重要的人，感谢您为我付出的一切。我会永远珍惜我们的回忆，努力成为您的骄傲！
+            </p>
+            <p>
+                制作于 <span id="current-year">2025</span> 年 · 充满<i class="fas fa-heart love-icon"></i>的祝福
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // 设置当前年份
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // 时间线动画
+        const timelineItems = document.querySelectorAll('.timeline-item');
+        
+        function checkTimeline() {
+            timelineItems.forEach(item => {
+                const itemTop = item.getBoundingClientRect().top;
+                if (itemTop < window.innerHeight * 0.8) {
+                    item.classList.add('visible');
+                }
+            });
+        }
+        
+        // 初始检查
+        checkTimeline();
+        
+        // 滚动事件监听
+        window.addEventListener('scroll', checkTimeline);
+        
+        // 祝福卡片翻转
+        const wishCard = document.getElementById('wish-card');
+        wishCard.addEventListener('click', function() {
+            this.classList.toggle('flipped');
+            
+            // 触发烟花效果
+            createFireworks();
+        });
+        
+        // 烟花效果
+        function createFireworks() {
+            const fireworks = document.getElementById('fireworks');
+            fireworks.innerHTML = '';
+            
+            for (let i = 0; i < 30; i++) {
+                setTimeout(() => {
+                    const firework = document.createElement('div');
+                    firework.classList.add('firework');
+                    firework.style.left = `${Math.random() * 100}%`;
+                    firework.style.top = `${Math.random() * 100}%`;
+                    firework.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                    firework.style.animation = `explode ${0.5 + Math.random() * 0.5}s forwards`;
+                    
+                    fireworks.appendChild(firework);
+                    
+                    // 移除烟花元素
+                    setTimeout(() => {
+                        firework.remove();
+                    }, 1000);
+                }, i * 100);
+            }
+            
+            // 添加烟花动画样式
+            const style = document.createElement('style');
+            style.innerHTML = `
+                @keyframes explode {
+                    0% {
+                        width: 5px;
+                        height: 5px;
+                        opacity: 1;
+                        transform: translate(0, 0);
+                    }
+                    100% {
+                        width: 200px;
+                        height: 200px;
+                        opacity: 0;
+                        transform: translate(-100px, -100px);
+                    }
+                }
+                
+                .firework {
+                    position: absolute;
+                    border-radius: 50%;
+                    pointer-events: none;
+                }
+            `;
+            document.head.appendChild(style);
+        }
+        
+        // 滚动到内容
+        document.querySelector('.scroll-down').addEventListener('click', function() {
+            window.scrollTo({
+                top: document.querySelector('.memories').offsetTop - 80,
+                behavior: 'smooth'
+            });
+        });
+        
+        // 气球动画增强
+        const balloons = document.querySelectorAll('.balloon');
+        balloons.forEach(balloon => {
+            balloon.addEventListener('animationiteration', () => {
+                balloon.style.left = `${Math.random() * 90 + 5}%`;
+            });
+        });
+    </script>
+</body>
+</html>
